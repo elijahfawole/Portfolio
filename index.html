@@ -1,1 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elijah Fawole — Visual Communication Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0D0D0D;--cream:#F4EFE6;--warm-white:#FAFAF7;
+  --teal:#157A6E;--teal-light:#1FA896;--teal-pale:#D5EDE9;
+  --gold:#B8962E;--gold-light:#D4AF52;--gold-pale:#F5EDD3;
+  --muted:#6A6560;--border:rgba(13,13,13,0.10);--card:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(244,239,230,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:padding 0.3s}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:0.5rem}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--teal)!important;color:#fff!important;padding:0.45rem 1.1rem;border-radius:2px}
+.nav-cta:hover{background:var(--teal-light)!important}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 3rem 4rem;gap:4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 75% 50%,rgba(21,122,110,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-deco{position:absolute;right:-0.05em;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:38vw;font-weight:700;color:rgba(21,122,110,0.032);line-height:1;pointer-events:none;user-select:none}
+.hero-left{position:relative;z-index:2}
+.kicker{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.8rem}
+.kicker::before{content:'';display:inline-block;width:2.8rem;height:1px;background:var(--teal)}
+h1.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:700;line-height:1.04;letter-spacing:-0.02em;margin-bottom:1.6rem}
+h1.hero-h1 em{font-style:italic;color:var(--teal)}
+.hero-desc{font-size:1.05rem;font-weight:300;color:#444;line-height:1.75;max-width:480px;margin-bottom:2.2rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.4rem}
+.htag{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.35rem 0.85rem;border:1px solid rgba(21,122,110,0.35);border-radius:2px;color:var(--teal);background:rgba(21,122,110,0.04)}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-p{background:var(--teal);color:#fff;padding:0.8rem 1.8rem;border-radius:2px;border:none;font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-p:hover{background:var(--teal-light);transform:translateY(-1px)}
+.btn-o{background:transparent;color:var(--ink);padding:0.8rem 1.8rem;border-radius:2px;border:1px solid rgba(13,13,13,0.25);font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:border-color 0.2s,color 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-o:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-1px)}
+
+.hero-right{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1rem;height:420px}
+.hcard{background:var(--card);border-radius:4px;border:1px solid var(--border);padding:1.6rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
+.hcard:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.hcard.big{grid-row:span 2}
+.hcard.teal{background:var(--teal);color:#fff}
+.hcard.gold{background:var(--gold-pale)}
+.hnum{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;line-height:1;margin-bottom:0.3rem}
+.hlabel{font-size:0.78rem;font-weight:400;letter-spacing:0.06em;opacity:0.75}
+.hcard.big .hnum{font-size:4.5rem}
+.hcard.teal .hlabel{opacity:0.8}
+.hacc{position:absolute;top:1rem;right:1rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4}
+
+/* SECTIONS */
+section{padding:5rem 3rem}
+.sec-kicker{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.7rem}
+.sec-kicker::before{content:'';width:2rem;height:1px;background:var(--teal)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em}
+.sec-title em{font-style:italic;color:var(--teal)}
+.sec-sub{font-size:1rem;color:var(--muted);margin-top:0.8rem;max-width:560px;font-weight:300;line-height:1.7}
+
+/* ABOUT */
+.about{background:var(--ink);color:#fff;padding:5rem 3rem}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1200px;margin:0 auto}
+.about .sec-kicker{color:var(--teal-light)}
+.about .sec-kicker::before{background:var(--teal-light)}
+.about .sec-title{color:#fff}
+.about .sec-title em{color:var(--teal-light)}
+.about-text{font-size:1rem;font-weight:300;line-height:1.8;color:rgba(255,255,255,0.72);margin-top:1.5rem}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.svc-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.4rem;transition:background 0.2s,border-color 0.2s}
+.svc-card:hover{background:rgba(21,122,110,0.15);border-color:rgba(21,122,110,0.4)}
+.svc-icon{font-size:1.3rem;margin-bottom:0.5rem}
+.svc-name{font-size:0.82rem;font-weight:600;letter-spacing:0.06em;color:#fff;margin-bottom:0.3rem}
+.svc-desc{font-size:0.78rem;color:rgba(255,255,255,0.48);line-height:1.6}
+.quote-block{margin-top:2rem;padding:1.5rem;border-left:3px solid var(--teal-light);background:rgba(21,122,110,0.08);border-radius:0 4px 4px 0}
+.quote-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-light);margin-bottom:0.5rem}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:rgba(255,255,255,0.85);line-height:1.6}
+
+/* PORTFOLIO */
+.portfolio{background:var(--warm-white)}
+.rel-key{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;margin-bottom:2.8rem}
+.rbadge{display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+.rdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.rdot.h{background:var(--teal)}.rdot.m{background:var(--gold)}.rdot.b{background:#aaa}
+
+/* PROJECT CARDS */
+.pcard{background:var(--card);border-radius:6px;border:1px solid var(--border);overflow:hidden;margin-bottom:2.5rem;transition:box-shadow 0.3s}
+.pcard:hover{box-shadow:0 16px 48px rgba(0,0,0,0.1)}
+.p-hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.p-wide{display:grid;grid-template-columns:2fr 3fr;min-height:360px}
+.p2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem}
+.p2 .pcard{margin-bottom:0}
+
+.pvis{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:2.5rem;position:relative;overflow:hidden}
+.pvis.dark{background:#0D0D0D}.pvis.teal{background:#0D3B35}.pvis.blue{background:#0A1E4A}.pvis.warm{background:#1A0A00}.pvis.light{background:#EAF4F2}.pvis.navy{background:#08155A}.pvis.xblue{background:#0C1A3B}.pvis.cream{background:#F0EDE8}
+
+.logo-stack{display:flex;flex-direction:column;gap:1.2rem;align-items:center;width:100%}
+.lswatch{padding:1.8rem 2.2rem;border-radius:4px;display:flex;align-items:center;justify-content:center;width:100%}
+.lswatch.w{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+.lswatch.t{background:#1A8C7F}
+.lswatch img{max-height:56px;object-fit:contain;max-width:100%}
+.color-row{display:flex;gap:0.5rem;align-items:center;justify-content:center}
+.chip{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,0.2)}
+.mock{width:88%;max-width:320px;border-radius:4px;box-shadow:0 8px 32px rgba(0,0,0,0.25);object-fit:cover}
+.mock.wide{max-width:400px;width:93%}
+
+.pinfo{padding:2.8rem}
+.pinfo.sm{padding:1.8rem}
+.rank-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:2px;margin-bottom:1.2rem}
+.r1{background:rgba(21,122,110,0.1);color:var(--teal);border:1px solid rgba(21,122,110,0.3)}
+.r2{background:rgba(184,150,46,0.1);color:var(--gold);border:1px solid rgba(184,150,46,0.3)}
+.r3{background:rgba(184,150,46,0.07);color:var(--gold);border:1px solid rgba(184,150,46,0.2)}
+.ro{background:rgba(100,100,100,0.06);color:var(--muted);border:1px solid var(--border)}
+.ptitle{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;line-height:1.15;letter-spacing:-0.01em;margin-bottom:0.3rem}
+.ptitle.sm{font-size:1.4rem}
+.pclient{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem}
+.cs{display:flex;flex-direction:column;gap:1.1rem}
+.clabel{font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.25rem}
+.ctext{font-size:0.92rem;color:#444;line-height:1.7;font-weight:300}
+.ptags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.3rem}
+.ptag{font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.25rem 0.65rem;background:var(--cream);border:1px solid var(--border);border-radius:2px;color:var(--muted)}
+.result{margin-top:1.5rem;padding:1rem 1.2rem;background:var(--teal-pale);border-radius:4px;display:flex;align-items:flex-start;gap:0.75rem}
+.ricon{font-size:1.1rem;flex-shrink:0;margin-top:0.1rem}
+.rtext{font-size:0.85rem;color:var(--teal);font-weight:500;line-height:1.5}
+
+/* CONTACT */
+.contact{background:var(--teal);padding:5rem 3rem;text-align:center}
+.contact .sec-kicker{color:rgba(255,255,255,0.55);justify-content:center}
+.contact .sec-kicker::before{background:rgba(255,255,255,0.35)}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-0.02em;margin:1rem 0 0.8rem}
+.contact-title em{font-style:italic;color:var(--gold-light)}
+.contact-sub{font-size:1rem;color:rgba(255,255,255,0.7);font-weight:300;max-width:480px;margin:0 auto 2.5rem;line-height:1.75}
+.contact-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.btn-w{background:#fff;color:var(--teal);padding:0.9rem 2rem;border-radius:2px;border:none;font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-w:hover{background:var(--gold-pale);transform:translateY(-1px)}
+.btn-ow{background:transparent;color:#fff;padding:0.9rem 2rem;border-radius:2px;border:1.5px solid rgba(255,255,255,0.45);font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:border-color 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-ow:hover{border-color:#fff;transform:translateY(-1px)}
+.cdetails{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap}
+.citem{display:flex;flex-direction:column;gap:0.2rem;align-items:center}
+.cilabel{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.48);font-family:'DM Mono',monospace}
+.cival{font-size:0.9rem;color:rgba(255,255,255,0.9);font-weight:500}
+
+footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:#fff}
+.footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.3);letter-spacing:0.04em}
+
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.fade-up.vis{opacity:1;transform:translateY(0)}
+
+/* slide mockup inside pvis */
+.slide-mock{width:92%;background:#1B2FA0;border-radius:4px;padding:1.4rem;box-shadow:0 8px 24px rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1)}
+.slide-kicker{font-size:0.5rem;color:rgba(255,255,255,0.45);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;font-family:'DM Mono',monospace}
+.slide-title{font-size:1.1rem;font-family:'Cormorant Garamond',serif;color:#fff;font-weight:700;line-height:1.2;margin-bottom:0.8rem}
+.slide-stats{display:flex;gap:0.8rem;margin-top:0.2rem}
+.slide-stat{background:rgba(255,255,255,0.08);border-radius:3px;padding:0.4rem 0.6rem;flex:1;text-align:center}
+.slide-stat-num{font-size:1rem;font-weight:700;color:#fff}
+.slide-stat-num.red{color:#C04040}
+.slide-stat-label{font-size:0.5rem;color:rgba(255,255,255,0.45)}
+.fest-row{display:flex;gap:0.8rem;margin-top:0.6rem}
+.fest-badge{background:rgba(255,255,255,0.08);border-radius:3px;padding:0.4rem 0.7rem;text-align:center}
+.fest-name{font-size:0.5rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace}
+.fest-val{font-size:0.7rem;color:rgba(255,220,150,0.85);font-weight:500}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2.5rem;min-height:auto}
+  .hero-right{display:none}
+  section{padding:3.5rem 1.5rem}
+  .about-inner{grid-template-columns:1fr;gap:2.5rem}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .p-hero{grid-template-columns:1fr}
+  .p-wide{grid-template-columns:1fr}
+  .p2{grid-template-columns:1fr}
+  .pvis{min-height:220px!important}
+  .pinfo{padding:1.6rem}
+  .contact{padding:3.5rem 1.5rem}
+  footer{padding:1.5rem}
+}
+@media(max-width:600px){
+  .svc-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-brand"><span class="nav-dot"></span>Elijah Fawole</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero" class="hero">
+  <div class="hero-deco">E</div>
+  <div class="hero-left">
+    <p class="kicker">Visual Communication Designer · Nigeria</p>
+    <h1 class="hero-h1">Design that<br><em>makes science</em><br>speak louder.</h1>
+    <p class="hero-desc">I bridge the gap between complex ideas and the people who need to understand them, through purposeful branding, campaign graphics, and presentation design that drive real-world impact.</p>
+    <div class="hero-tags">
+      <span class="htag">Brand Identity</span>
+      <span class="htag">Health Communication</span>
+      <span class="htag">Campaign Design</span>
+      <span class="htag">Scientific Presentation</span>
+      <span class="htag">Social Media Graphics</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#work" class="btn-p">View My Work ↓</a>
+      <a href="#contact" class="btn-o">Let's Collaborate</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hcard big teal">
+      <span class="hacc">Projects</span>
+      <div class="hnum">7+</div>
+      <div class="hlabel"> selected design projects across health, science &amp; community sectors</div>
+    </div>
+    <div class="hcard gold">
+      <span class="hacc">Awards</span>
+      <div class="hnum" style="font-size:2.2rem">3×</div>
+      <div class="hlabel">Film festival selections for The Girl Who Cannot Love (2025)</div>
+    </div>
+    <div class="hcard">
+      <span class="hacc">Sectors</span>
+      <div class="hnum" style="font-size:2.2rem">4</div>
+      <div class="hlabel">Health · Science · Film · Faith community</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="sec-kicker">Who I Am</div>
+      <h2 class="sec-title">A designer who <em>thinks</em> in science &amp; speaks in visuals.</h2>
+      <p class="about-text">I'm Elijah Fawole, a visual communication designer based in Osun State, Nigeria, with a background in Microbiology &amp; Molecular and Genomics. That unusual combination; science training plus design practice, means I don't just make things look good. I understand the content deeply, then translate it into visuals that inform, inspire, and mobilise audiences.</p>
+      <p class="about-text" style="margin-top:1rem">My work spans public health campaigns, brand identity for health and &amp; communications projects and organisations, scientific presentation design, community event graphics, and film promotion.</p>
+      <div class="quote-block">
+        <div class="quote-label">Design Philosophy</div>
+        <p class="quote-text">"Good health information saves lives. Bad design buries it."</p>
+      </div>
+    </div>
+    <div>
+      <div class="svc-grid">
+        <div class="svc-card"><div class="svc-icon">🎨</div><div class="svc-name">Brand Identity</div><div class="svc-desc">Logo design, colour systems, and brand guidelines that create lasting recognition.</div></div>
+        <div class="svc-card"><div class="svc-icon">📢</div><div class="svc-name">Campaign Graphics</div><div class="svc-desc">Public health and awareness campaign visuals that drive action and reach.</div></div>
+        <div class="svc-card"><div class="svc-icon">📊</div><div class="svc-name">Science Communication</div><div class="svc-desc">Infographics and presentation design for research, seminars, and conferences.</div></div>
+        <div class="svc-card"><div class="svc-icon">📱</div><div class="svc-name">Social Media Design</div><div class="svc-desc">Consistent, engaging templates for recurring content series and campaigns.</div></div>
+        <div class="svc-card"><div class="svc-icon">📄</div><div class="svc-name">Document Templates</div><div class="svc-desc">Letterheads, reports, and branded document systems for organisations.</div></div>
+        <div class="svc-card"><div class="svc-icon">🎬</div><div class="svc-name">Entertainment Design</div><div class="svc-desc">Film banners, posters, and promotional materials with cinematic flair.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="work">
+  <div class="section-header" style="margin-bottom:2rem">
+    <div class="sec-kicker">Selected Work</div>
+    <h2 class="sec-title">Projects ranked by <em>impact &amp; relevance</em></h2>
+    <p class="sec-sub">Each project is presented as a case study showing the challenge, solution, and result. Projects are ranked highest-to-lowest by relevance to Generation Science's branding and content needs.</p>
+  </div>
+
+  <div class="rel-key">
+    <div class="rbadge"><span class="rdot h"></span> High relevance — Generation Science</div>
+    <div class="rbadge"><span class="rdot m"></span> Medium relevance</div>
+    <div class="rbadge"><span class="rdot b"></span> Versatility showcase</div>
+  </div>
+
+  <!-- P1: HEALTH HERALDS — HERO -->
+  <div class="pcard fade-up">
+    <div class="p-hero">
+      <div class="pvis light">
+        <div class="logo-stack">
+          <div class="lswatch w">
+            <img src="images/new-hhc-logo-colored.png" style="max-height:150px;" alt="Health Heralds Communications full colour logo" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'font-size:0.78rem;color:#888;text-align:center\'>Health Heralds — Full Colour</div>')">
+          </div>
+          <div class="lswatch" style="background:#007d99">
+            <img src="images/new-hhc-logo-black-sky.png" style="max-height:150px;" alt="Health Heralds reversed on teal" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'font-size:1.78rem;color:#9FE1CB;text-align:center\'>Reversed Teal Variant</div>')">
+          </div>
+          <div class="color-row">
+            <div class="chip" style="background:#1A8C7F;border-color:#1A8C7F" title="Brand Teal"></div>
+            <div class="chip" style="background:#0A3A6E;border-color:#0A3A6E" title="Deep Navy"></div>
+            <div class="chip" style="background:#FFFFFF;border-color:#ccc" title="White"></div>
+            <div class="chip" style="background:#0E1F1E;border-color:#333" title="Dark Background"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="rank-badge r1">⭐ #1 · Highest Relevance — Brand Identity</div>
+        <h3 class="ptitle">Health Heralds Communications</h3>
+        <p class="pclient">Logo Design · Brand Identity · Colour System</p>
+        <div class="cs">
+          <div><div class="clabel">The Challenge</div><p class="ctext">Health Heralds Communications needed a brand identity that communicated credibility, clarity, and approachability in the health communications space. The logo had to work across all digital platforms, print media, and background variations without losing impact or legibility.</p></div>
+          <div><div class="clabel">The Solution</div><p class="ctext">I developed a logo system anchored on a stylised "H" lettermark that subtly incorporates a broadcasting/signal motif, communicating both health and communication simultaneously. The teal-to-navy colour palette balances trustworthiness with energy. I delivered three colour variations: full-colour, monochrome black, and reversed white, ensuring maximum versatility across any application.</p></div>
+          <div><div class="clabel">The Process</div><p class="ctext">The mark went through conceptual exploration focused on the dual meaning of "heralding", both a historical call to attention and a modern broadcast signal. The final icon fuses these in a compact, scalable form that reads clearly even at small sizes.</p></div>
+        </div>
+        <div class="result"><div class="ricon">✅</div><div class="rtext">Delivered a complete 3-variant logo system (full colour, monochrome black, reversed white), production-ready for digital, print, and merchandise applications. Directly comparable to the brand identity work Generation Science is commissioning.</div></div>
+        <div class="ptags">
+          <span class="ptag">Logo Design</span><span class="ptag">Brand Identity</span><span class="ptag">Health Communication</span><span class="ptag">Colour System</span><span class="ptag">Multi-variant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P2 + P3 side by side -->
+  <div class="p2">
+    <div class="pcard fade-up">
+      <div class="pvis xblue" style="min-height:260px">
+        <div class="logo-stack">
+          <div class="lswatch w" style="padding:1.4rem">
+            <img src="images/sss-logo-colored.jpg" alt="Stop Superbugs Squad coloured logo" style="max-height:190px" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'font-size:0.72rem;color:#888\'>Stop Superbugs Squad — Colour</div>')">
+          </div>
+          <div class="lswatch" style="background:#004aad;padding:1.4rem">
+            <img src="images/sss-logo-white-with-blue-background.jpg" alt="Stop Superbugs Squad reversed" style="max-height:190px" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'font-size:0.72rem;color:#9EC3FF\'>Reversed Variant</div>')">
+          </div>
+          <div class="color-row">
+            <div class="chip" style="background:#E52222;border-color:#E52222"></div>
+            <div class="chip" style="background:#0C1A3B;border-color:#0C1A3B"></div>
+            <div class="chip" style="background:#00AEEF;border-color:#00AEEF"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo sm">
+        <div class="rank-badge r2">⭐ #2 · High Relevance — Health Logo</div>
+        <h3 class="ptitle sm">Stop Superbugs Squad</h3>
+        <p class="pclient">Logo Design · AMR Campaign</p>
+        <div class="cs">
+          <div><div class="clabel">The Challenge</div><p class="ctext">Create a logo communicating urgency around antimicrobial resistance (AMR).</p></div>
+          <div><div class="clabel">The Solution</div><p class="ctext">Shield-and-microbe icon creates an immediate sense of protection. The bold typographic hierarchy reads at a glance on social media and print. Two full variants delivered, colour and monochromatic.</p></div>
+        </div>
+        <div class="result"><div class="ricon">🛡️</div><div class="rtext">Deployed in AMR campaign reaching more 80 schools nationwide across Nigeria.</div></div>
+        <div class="ptags"><span class="ptag">Logo Design</span><span class="ptag">AMR</span><span class="ptag">Youth Audience</span><span class="ptag">AMR Communication</span></div>
+      </div>
+    </div>
+
+    <div class="pcard fade-up">
+      <div class="pvis blue" style="min-height:260px">
+        <img src="images/amr-champions-flyer.jpg" alt="Call for AMR Champions campaign" class="mock" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'color:rgba(255,255,255,0.4);font-size:0.78rem;padding:1rem;text-align:center\'>AMR Champions Campaign Flyer</div>')">
+      </div>
+      <div class="pinfo sm">
+        <div class="rank-badge r2">⭐ #3 · High Relevance — Campaign</div>
+        <h3 class="ptitle sm">Call for AMR Champions</h3>
+        <p class="pclient">HDI / Stop Superbugs Squad · Public Health</p>
+        <div class="cs">
+          <div><div class="clabel">The Challenge</div><p class="ctext">Recruit 40 youth AMR champions from Nigerian universities with a deadline-driven call-to-action and compelling public health message.</p></div>
+          <div><div class="clabel">The Solution</div><p class="ctext">Clean two-column layout pairs urgency (deadline callout) with clarity (eligibility criteria). Hero photography creates aspiration.</p></div>
+        </div>
+        <div class="result"><div class="ricon">🏆</div><div class="rtext">Campaign graphic used for Trinity Challenge-backed AMR Champion call.</div></div>
+        <div class="ptags"><span class="ptag">Campaign Design</span><span class="ptag">Public Health</span><span class="ptag">Visual Communication</span><span class="ptag">Typography</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P4: PROJECT ELIMINATE RABIES -->
+  <div class="pcard fade-up">
+    <div class="p-wide">
+      <div class="pvis dark" style="min-height:340px">
+        <img src="images/eliminate-rabies.jpg" alt="Project Eliminate Rabies campaign" class="mock" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'color:rgba(255,255,255,0.35);font-size:0.78rem;padding:1rem;text-align:center\'>Project Eliminate Rabies — Campaign Graphic</div>')">
+      </div>
+      <div class="pinfo">
+        <div class="rank-badge r3">⭐ #4 · Medium Relevance — Public Health Campaign</div>
+        <h3 class="ptitle">Project Eliminate Rabies</h3>
+        <p class="pclient">One Health &amp; Development Initiative (OHDI) · Community Awareness</p>
+        <div class="cs">
+          <div><div class="clabel">The Challenge</div><p class="ctext">Communicate a complex government-NGO collaboration for a community-level dog vaccination campaign in Benue State, Nigeria. The design needed to carry three institutional logos while maintaining a clear public health message aimed at community audiences.</p></div>
+          <div><div class="clabel">The Solution</div><p class="ctext">A dominant navy-and-gold hero banner draws the eye immediately to the campaign name. Institutional logos are balanced across the bottom without competing with the primary message. Photographic elements; a veterinarian and a dog, ground the abstract campaign in human and animal reality, creating emotional connection.</p></div>
+          <div><div class="clabel">The Result</div><p class="ctext">Campaign graphic deployed for state-level public health mobilisation in collaboration with the Benue State Bureau of Livestock Development.</p></div>
+        </div>
+        <div class="result"><div class="ricon">🐕</div><div class="rtext">Support government-level vaccination drive in Benue state, Nigeria, bridging institutional credibility and community reach through design.</div></div>
+        <div class="ptags"><span class="ptag">Health Campaign</span><span class="ptag">Government</span><span class="ptag">One Health</span><span class="ptag">NGO</span><span class="ptag">Multi-stakeholder</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P5 + P6 -->
+  <div class="p2">
+    <div class="pcard fade-up">
+      <div class="pvis navy" style="min-height:240px;padding:1.5rem">
+        <div class="slide-mock">
+          <div class="slide-kicker">Seminar Presentation</div>
+          <div class="slide-title">Current Trends in<br>Hepatitis C Virus</div>
+          <div class="slide-stats">
+            <div class="slide-stat"><div class="slide-stat-num">56.8M</div><div class="slide-stat-label">People affected</div></div>
+            <div class="slide-stat"><div class="slide-stat-num red">&gt;95%</div><div class="slide-stat-label">Cure rate (DAAs)</div></div>
+            <div class="slide-stat"><div class="slide-stat-num">7+</div><div class="slide-stat-label">Genotypes</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo sm">
+        <div class="rank-badge r3">⭐ #5 · Science Communication</div>
+        <h3 class="ptitle sm">HCV Research Seminar</h3>
+        <p class="pclient">Redeemer's University · Academic Presentation</p>
+        <div class="cs">
+          <div><div class="clabel">The Challenge</div><p class="ctext">Transform dense HCV research — 34 slides across molecular biology, epidemiology, co-infection, and treatment trends — into a visually compelling presentation for a postgraduate research seminar.</p></div>
+          <div><div class="clabel">The Solution</div><p class="ctext">Deep navy and crimson palette communicates scientific authority. Data slides use high-contrast stat cards. Section break slides use full-bleed virus imagery for emotional punctuation between content sections.</p></div>
+        </div>
+        <div class="result"><div class="ricon">🎓</div><div class="rtext">Presented at Research Seminar. Demonstrates science communication design directly applicable to Generation Science's content series.</div></div>
+        <div class="ptags"><span class="ptag">Presentation</span><span class="ptag">Science Communication</span><span class="ptag">Data Visualization</span><span class="ptag">Academic</span></div>
+      </div>
+    </div>
+
+    <div class="pcard fade-up">
+      <div class="pvis cream" style="min-height:240px">
+        <img src="images/oikos-hangout.png" alt="Oikos Welcome Hangout flyer" class="mock" style="max-width:180px" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'font-size:0.78rem;color:#888;text-align:center\'>Oikos Welcome Hangout Flyer</div>')">
+      </div>
+      <div class="pinfo sm">
+        <div class="rank-badge ro">#6 · Community Event Design</div>
+        <h3 class="ptitle sm">Oikos Welcome Hangout</h3>
+        <p class="pclient">Heritage of Faith, Osogbo · Event Promotion</p>
+        <div class="cs">
+          <div><div class="clabel">The Challenge</div><p class="ctext">Create a vibrant, youth-targeted event flyer that conveys fun and warmth while clearly communicating time, date, location, and registration without overwhelming the viewer.</p></div>
+          <div><div class="clabel">The Solution</div><p class="ctext">Bold distressed typography creates energy. Desaturated photography focuses attention on the headline. Collaged picnic elements establish atmosphere. All critical information is scannable without competing with the event name.</p></div>
+        </div>
+        <div class="result"><div class="ricon">🎉</div><div class="rtext">Successfully promoted to UNIOSUN campus community.</div></div>
+        <div class="ptags"><span class="ptag">Event Design</span><span class="ptag">Youth</span><span class="ptag">Social Media</span><span class="ptag">Campus</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P7: FILM BANNER -->
+  <div class="pcard fade-up">
+    <div class="p-hero">
+      <div class="pvis warm">
+        <img src="images/girl-who-cannot-love.jpg" alt="The Girl Who Cannot Love film banner" class="mock wide" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div style=\'color:rgba(255,200,100,0.45);font-size:0.78rem;padding:2rem;text-align:center\'>The Girl Who Cannot Love — Film Banner</div>')">
+        <div class="fest-row">
+          <div class="fest-badge"><div class="fest-name">African SDGs</div><div class="fest-val">Semi-Finalist '25</div></div>
+          <div class="fest-badge"><div class="fest-name">AFRIFF</div><div class="fest-val">Official Selection</div></div>
+          <div class="fest-badge"><div class="fest-name">ENIFF</div><div class="fest-val">Official Selection</div></div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="rank-badge ro">#7 · Creative Range — Film Banner</div>
+        <h3 class="ptitle">The Girl Who Cannot Love</h3>
+        <p class="pclient">Listening Birds Productions / AOP Productions / Big Way Entertainment · Film Promotion</p>
+        <div class="cs">
+          <div><div class="clabel">The Challenge</div><p class="ctext">Create a film promotion banner that captures the emotional weight of a drama about trauma and emotional barriers. The movie, which is a health advocacy project communicates the harmful impact of breast flattening, a harmful process aimed at making a girl child from being sexually attractive. The banner needed to work across social media, cinema, and press usage.</p></div>
+          <div><div class="clabel">The Solution</div><p class="ctext">A rich amber-over-dark cinematic tone palette anchors the emotional register. The title uses a dual-weight approach, thin serif tagline above the bold impactful main title. Character photography is cut out against the atmospheric background, creating depth. Three festival laurel wreaths are positioned without crowding, communicating prestige immediately.</p></div>
+          <div><div class="clabel">Why It Matters for Generation Science</div><p class="ctext">This piece demonstrates the ability to handle emotionally complex communication, a skill directly transferable to science storytelling that must connect with Millennial and Gen Z audiences, not just inform them. Good science communication, like good film, must first make an audience feel something, then it can make them think, and finally, move them to act.</p></div>
+        </div>
+        <div class="result"><div class="ricon">🎬</div><div class="rtext">Film selected for AFRIFF 2025, ENIFF 2025, and African SDGs Film Festival 2025, three major Nigerian and pan-African film festivals. The banner was used across all official festival submissions and social media promotion.</div></div>
+        <div class="ptags"><span class="ptag">Film Design</span><span class="ptag">Cinematic Typography</span><span class="ptag">Festival Selected</span><span class="ptag">Emotional Storytelling</span><span class="ptag">Poster</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="sec-kicker">Let's Work Together</div>
+  <h2 class="contact-title">Ready to make your<br>science <em>unmissable?</em></h2>
+  <p class="contact-sub">Whether you need brand templates, a recurring content series, infographic design, or a full brand identity, let's talk. Available for freelance and contract work starting immediately.</p>
+  <div class="contact-ctas">
+    <a href="mailto:elijahfawole@gmail.com" class="btn-w">📧 Send an Email</a>
+    <a href="#work" class="btn-ow">View Work Again ↑</a>
+  </div>
+  <div class="cdetails">
+    <div class="citem"><span class="cilabel">Email</span><span class="cival">elijahfawole@gmail.com</span></div>
+    <div class="citem"><span class="cilabel">Location</span><span class="cival">Osun State, Nigeria</span></div>
+    <div class="citem"><span class="cilabel">Availability</span><span class="cival">Open to opportunities</span></div>
+    <div class="citem"><span class="cilabel">Primary Tools</span><span class="cival">Canva · Figma</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Elijah Fawole</div>
+  <div class="footer-copy">Visual Communication Designer · Osun State, Nigeria</div>
+  <div class="footer-copy">Portfolio prepared for Generation Science pitch · 2026</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.padding = window.scrollY > 60 ? '0.65rem 3rem' : '1rem 3rem';
+});
+</script>
+</body>
+</html>
 
